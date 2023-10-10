@@ -1,0 +1,3 @@
+proxy:
+  host: ws-wcg
+  port: 18080

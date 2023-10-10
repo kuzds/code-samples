@@ -1,0 +1,9 @@
+proxy:
+  host: ${PROXY_HOST}
+  port: ${PROXY_PORT}
+vault:
+  url: ${VAULT_URL}
+  path: ${VAULT_PATH}
+  username: ${VAULT_USERNAME}
+  password: ${VAULT_PASSWORD}
+
