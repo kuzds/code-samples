@@ -15,13 +15,15 @@ Using Spring Data for paging
 ## Libraries
 - **CSV processing**\
   Comparison of Apache Commons CSV and OpenCSV
-- **XML processing**
+- **Jackson XML/JSON parsing**
 
 [//]: # (  Not finished)
 - **Zip files**
 
 [//]: # (  Not finished)
 
+## Articles
+- [@JsonView](https://reflectoring.io/jackson-jsonview-tutorial/)
 
 [//]: # (
 TODO
