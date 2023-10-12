@@ -1,0 +1,16 @@
+spring:
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    username: ${MAIL_USERNAME} # логин от учётки Yandex
+    password: ${MAIL_PASSWORD} # специальный пароль для приложения
+    test-connection: true # проверка подключения при старте приложения
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+    sender: # отправитель письма (его почта и имя)
+      email: no-reply@yandex.ru
+      text: no-reply

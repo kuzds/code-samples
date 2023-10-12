@@ -1,0 +1,14 @@
+spring:
+  mail:
+    host: post.transcapital.com
+#    port: 465       # default - 25
+    test-connection: true # проверка подключения при старте приложения
+    properties:
+      mail:
+        smtp:
+          auth: false
+#          ssl:
+#            enable: true
+    sender: # отправитель письма (его почта и имя)
+      email: no-reply@tkbbank.ru
+      text: no-reply
