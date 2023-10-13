@@ -36,4 +36,6 @@ rabbit mq
 брокеры сообщений
 spring validation
 springdoc
+security
+web socket
 )

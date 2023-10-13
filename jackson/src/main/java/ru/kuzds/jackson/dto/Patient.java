@@ -13,18 +13,18 @@ import java.time.LocalDate;
 public class Patient {
 
     @JsonProperty("first_name")
-    public String firstName;
+    private String firstName;
 
     @JsonProperty("middle_name")
-    public String middleName;
+    private String middleName;
 
     @JsonProperty("last_name")
-    public String lastName;
+    private String lastName;
 
-    public LocalDate birthday;
+    private LocalDate birthday;
 
-    public Gender gender = Gender.UNDEFINED; // for case "{}"
+    private Gender gender = Gender.UNDEFINED; // for case "{}"
 
-    public String phone;
+    private String phone;
 }
 
