@@ -11,7 +11,7 @@ import javax.validation.Valid;
 @Validated
 @Service
 public class PayService {
-
+    // Для валидации в контроллере достаточно @Valid
     public void pay(@Valid PayRequest request) {
         log.info(request.toString());
     }

@@ -1,0 +1,5 @@
+smb:
+  host: ${SMB_HOST}
+  username: ${SMB_USERNAME}
+  password: ${SMB_PASSWORD}
+  shareAndDir: ${SMB_SHARE_AND_DIR}

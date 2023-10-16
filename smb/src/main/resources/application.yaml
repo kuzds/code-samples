@@ -1,0 +1,4 @@
+smb:
+  url: ${SMB_URL}
+  username: ${SMB_USERNAME}
+  password: ${SMB_PASSWORD}
