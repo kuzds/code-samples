@@ -42,9 +42,7 @@ Spring Boot Starter AMQP
 [//]: # (
 TODO
 zip
-smb
 сертификаты?
-json streaming parsing
 rabbit mq
 брокеры сообщений
 security
