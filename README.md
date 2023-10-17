@@ -47,4 +47,6 @@ rabbit mq
 брокеры сообщений
 security
 web socket
+cookie
+OAuth
 )
