@@ -14,7 +14,7 @@ public class PayControllerAdvice {
     // is thrown due to service layer verification
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
-    ErrorResponse handleConstraintValidationException(ConstraintViolationException e) {
+    ErrorResponse handleConstraintViolationException(ConstraintViolationException e) {
         return new ErrorResponse(e);
     }
 

@@ -1,0 +1,10 @@
+camel:
+  servlet:
+    mapping:
+      context-path: /api/*
+
+activemq:
+  url: ${AMQ_URL}
+  username: ${AMQ_USERNAME}
+  password: ${AMQ_PASSWORD}
+  queue: ${AMQ_QUEUE}

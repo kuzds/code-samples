@@ -1,0 +1,5 @@
+spring:
+  thymeleaf:
+    suffix: .xml
+    servlet:
+      content-type: text/xml
