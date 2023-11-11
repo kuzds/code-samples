@@ -46,4 +46,5 @@ security
 web socket
 cookie
 OAuth
+spring-boot-data-jdbc
 )

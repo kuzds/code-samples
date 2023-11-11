@@ -5,7 +5,7 @@ import jcifs.CloseableIterator;
 import jcifs.SmbResource;
 import jcifs.config.PropertyConfiguration;
 import jcifs.context.BaseContext;
-import jcifs.smb.NtlmPasswordAuthentication;
+import jcifs.smb.NtlmPasswordAuthenticator;
 import jcifs.smb.SmbFile;
 import jcifs.smb.SmbFileOutputStream;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,7 +41,7 @@ public class SmbService {
     private void init() throws Exception {
         Properties prop = new Properties();
         CIFSContext baseContext = new BaseContext(new PropertyConfiguration(prop));
-        auth = baseContext.withCredentials(new NtlmPasswordAuthentication(baseContext, null, smbUsername, smbPassword));
+        auth = baseContext.withCredentials(new NtlmPasswordAuthenticator( null, smbUsername, smbPassword));
 
         try (SmbFile smbRoot = new SmbFile(smbUrl, auth)) {
             if (!smbRoot.exists()) {
@@ -136,7 +139,7 @@ public class SmbService {
      * @param directory smb-папка c создаваемым файлом
      * @param fileName  создаваемый smb-файл
      */
-    public void saveBodyToSmb(String body, String directory, String fileName) throws Exception {
+    public void saveBodyToSmb(byte[] body, String directory, String fileName) throws Exception {
         String smbDirectoryStr = smbUrl + directory;
 
         try (SmbFile smbDirectory = new SmbFile(smbDirectoryStr, auth)) {
@@ -147,7 +150,7 @@ public class SmbService {
         try (SmbFile smbFile = new SmbFile(smbFileName, auth)) {
 
             try (SmbFileOutputStream out = new SmbFileOutputStream(smbFile, true)) {
-                out.write(body.getBytes());
+                out.write(body);
             }
         }
     }

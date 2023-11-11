@@ -41,7 +41,10 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 			<version>4.0.4</version>
 		</dependency>
-
+		<!--		<dependency>-->
+		<!--			<groupId>io.github.openfeign</groupId>-->
+		<!--			<artifactId>feign-httpclient</artifactId>-->
+		<!--		</dependency>-->
 
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>

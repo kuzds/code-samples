@@ -25,7 +25,7 @@ public class SmbApplication implements CommandLineRunner {
                 "./dest/"
         );
 
-        smbService.saveBodyToSmb("SOME BODY", "response/", "text.txt");
+        smbService.saveBodyToSmb("SOME BODY".getBytes(), "response/", "text.txt");
 
         smbService.saveFromLocalToSmb("./dest/", "response/20231009/");
     }
