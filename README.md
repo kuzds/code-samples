@@ -15,8 +15,10 @@
   Using Spring Data for paging
 - **Validation**\
   Spring Boot Validation & Mock MVC for testing
-- **RabbitMQ Dead Letters**\
-  Spring Boot Starter AMQP
+- **RabbitMQ**\
+  Topics and DeadLetter samples
+- **ActiveMQ**\
+  Simple sample
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
 
@@ -40,7 +42,6 @@
 TODO
 zip
 сертификаты?
-rabbit mq
 брокеры сообщений
 security
 web socket

@@ -1,0 +1,14 @@
+spring:
+  activemq:
+    broker-url: ${ACTIVEMQ_URL}
+    user: ${ACTIVEMQ_USER}
+    password: ${ACTIVEMQ_PASSWORD}
+
+kuzds:
+  activemq:
+    broker-url: ${ACTIVEMQ_URL}
+    user: ${ACTIVEMQ_USER}
+    password: ${ACTIVEMQ_PASSWORD}
+  queue:
+    from: ${QUEUE_FROM}
+    to: ${QUEUE_TO}

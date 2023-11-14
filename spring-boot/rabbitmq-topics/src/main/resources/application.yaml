@@ -1,0 +1,16 @@
+#spring:
+#  rabbitmq:
+#    host: ${RABBITMQ_HOST}
+#    port: ${RABBITMQ_PORT}
+#    virtual-host: ${RABBITMQ_VHOST}
+#    username: ${RABBITMQ_USER}
+#    password: ${RABBITMQ_PASS}
+
+
+kuzds:
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    virtual-host: ${RABBITMQ_VHOST}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASS}
