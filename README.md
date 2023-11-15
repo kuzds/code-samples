@@ -21,6 +21,8 @@
   Simple sample
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
+- **Redis**\
+  Simple Redis interaction
 
 ## Libraries
 

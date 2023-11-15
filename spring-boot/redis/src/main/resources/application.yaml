@@ -1,0 +1,11 @@
+#spring:
+#  redis:
+#    password: pass123
+#    host: localhost
+#    port: 6379
+
+kuzds:
+  redis:
+    password: pass123
+    host: localhost
+    port: 6379
