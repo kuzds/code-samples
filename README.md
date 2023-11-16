@@ -22,7 +22,7 @@
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
 - **Redis**\
-  Simple Redis interaction
+  Simple Redis interaction and Redis caching
 
 ## Libraries
 
