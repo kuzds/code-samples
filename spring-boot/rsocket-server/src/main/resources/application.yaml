@@ -1,0 +1,6 @@
+spring:
+  rsocket:
+    server:
+      port: 8888
+  main:
+    web-application-type: none

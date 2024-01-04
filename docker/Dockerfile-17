@@ -1,0 +1,10 @@
+FROM maven:3.9.5-eclipse-temurin-17-alpine AS build
+COPY ./src /home/app/src
+COPY pom.xml /home/app
+COPY settings.xml /root/.m2/
+RUN mvn -f /home/app/pom.xml clean package
+
+FROM eclipse-temurin:17-jre-jammy
+COPY --from=build /home/app/target/*.jar /usr/local/lib/app.jar
+EXPOSE 9000
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Xss512k -Xms100m -Xmx100m -Duser.timezone=GMT+3 -Dspring.profiles.active=$APP_PROF -jar /usr/local/lib/app.jar" ]
