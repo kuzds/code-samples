@@ -2,37 +2,38 @@
 
 ## Spring Boot
 
-- **Mail**\
-  Spring Boot Starter Mail
-
-[//]: # (Need refactoring )
-
-- **Vault**\
-  Using Vault API to get secrets under Proxy
-- **Proxy**\
-  Config for Spring WEB
-- **Paging**\
-  Using Spring Data for paging
-- **Validation**\
-  Spring Boot Validation & Mock MVC for testing
-- **RabbitMQ**\
-  Topics and DeadLetter samples
 - **ActiveMQ**\
   Simple sample
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
+- **Camunda**
+- **gRPC client/server**
+- **Integration SMB**
+- **Mail** &#x274C;
+- **Paging**\
+  Using Spring Data for paging
+- **Proxy**\
+  Config for Spring WEB
+- **RabbitMQ**\
+  Topics and DeadLetter samples
 - **Redis**\
   Simple Redis interaction and Redis caching
+- **Rsocket client/server**
+- **Validation**\
+  Spring Boot Validation & Mock MVC for testing
+- **Vault**\
+  Using Vault API to get secrets under Proxy
 
 ## Libraries
 
-- **Thymeleaf**\
-  Templates parsing
 - **CSV processing**\
   Comparison of Apache Commons CSV and OpenCSV
 - **Jackson**\
-  XML/JSON parsing
-- **Zip files**
+  XML/JSON parsing. Streaming
+- **SMB**
+- **Thymeleaf**\
+  Templates parsing
+- **Zip files** &#x274C;
 
 [//]: # (  Not finished)
 
