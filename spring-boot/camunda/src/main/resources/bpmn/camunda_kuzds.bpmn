@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0oq13x2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+  <bpmn:process id="camunda_kuzds" name="camunda kuzds" isExecutable="true">
+    <bpmn:startEvent id="Event_1kzzy4n">
+      <bpmn:outgoing>Flow_1ujybad</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_0q96zlk" name="логирование User">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="kuzds.logUser" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ujybad</bpmn:incoming>
+      <bpmn:outgoing>Flow_060dm0x</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:receiveTask id="Activity_0mz8rlz" name="ожидание mock события" messageRef="Message_3i75lho">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0zylr4s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a5ka0t</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:endEvent id="Event_1lnopbh" name="истекло время ожидания события">
+      <bpmn:incoming>Flow_0arbmt6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:boundaryEvent id="Event_0903p81" name="3 мин" attachedToRef="Activity_0mz8rlz">
+      <bpmn:outgoing>Flow_0arbmt6</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0agohqd">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT3M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0arbmt6" sourceRef="Event_0903p81" targetRef="Event_1lnopbh" />
+    <bpmn:sendTask id="Activity_0nejuhf" name="mock отправки сообщения">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="kuzds.mockSend" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_060dm0x</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zylr4s</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="Flow_1ujybad" sourceRef="Event_1kzzy4n" targetRef="Activity_0q96zlk" />
+    <bpmn:sequenceFlow id="Flow_060dm0x" sourceRef="Activity_0q96zlk" targetRef="Activity_0nejuhf" />
+    <bpmn:sequenceFlow id="Flow_0zylr4s" sourceRef="Activity_0nejuhf" targetRef="Activity_0mz8rlz" />
+    <bpmn:sequenceFlow id="Flow_0a5ka0t" sourceRef="Activity_0mz8rlz" targetRef="Activity_0hj4ooh" />
+    <bpmn:endEvent id="Event_0skxcrg">
+      <bpmn:incoming>Flow_1bsa0j6</bpmn:incoming>
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_1kv9mh7" />
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0hj4ooh" name="логирование User">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="kuzds.logUser" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0a5ka0t</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bsa0j6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1bsa0j6" sourceRef="Activity_0hj4ooh" targetRef="Event_0skxcrg" />
+  </bpmn:process>
+  <bpmn:message id="Message_3i75lho" name="kuzds.EVENT.mock">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=user.id" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="camunda_kuzds">
+      <bpmndi:BPMNShape id="Activity_0uu6ko6_di" bpmnElement="Activity_0q96zlk">
+        <dc:Bounds x="260" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_101f7rd_di" bpmnElement="Activity_0mz8rlz">
+        <dc:Bounds x="600" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lnopbh_di" bpmnElement="Event_1lnopbh">
+        <dc:Bounds x="662" y="195" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="643" y="238" width="75" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kzzy4n_di" bpmnElement="Event_1kzzy4n">
+        <dc:Bounds x="162" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qecedx_di" bpmnElement="Activity_0nejuhf">
+        <dc:Bounds x="430" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1x0sq9h_di" bpmnElement="Event_0skxcrg">
+        <dc:Bounds x="902" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0i7bhdp" bpmnElement="Activity_0hj4ooh">
+        <dc:Bounds x="760" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10yzrpu_di" bpmnElement="Event_0903p81">
+        <dc:Bounds x="602" y="122" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="635" y="156" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0arbmt6_di" bpmnElement="Flow_0arbmt6">
+        <di:waypoint x="620" y="158" />
+        <di:waypoint x="620" y="213" />
+        <di:waypoint x="662" y="213" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ujybad_di" bpmnElement="Flow_1ujybad">
+        <di:waypoint x="198" y="100" />
+        <di:waypoint x="260" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_060dm0x_di" bpmnElement="Flow_060dm0x">
+        <di:waypoint x="360" y="100" />
+        <di:waypoint x="430" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zylr4s_di" bpmnElement="Flow_0zylr4s">
+        <di:waypoint x="530" y="100" />
+        <di:waypoint x="600" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a5ka0t_di" bpmnElement="Flow_0a5ka0t">
+        <di:waypoint x="700" y="100" />
+        <di:waypoint x="760" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bsa0j6_di" bpmnElement="Flow_1bsa0j6">
+        <di:waypoint x="860" y="100" />
+        <di:waypoint x="902" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
