@@ -19,18 +19,16 @@ public class UserWorker {
     private final ZeebeClient zeebeClient;
 
     @JobWorker(type = "kuzds.logUser")
-    public void logUser(@Variable User user) {
-        log.info("Received user: " + user);
+    public void logUser(@Variable User user, @Variable String roleAlias) {
+        log.info("Received user: {} with role: {}", user, roleAlias);
     }
 
     @JobWorker(type = "kuzds.mockSend")
     public void mockSend(@Variable User user) {
-        PublishMessageCommandStep1.PublishMessageCommandStep3 step3 = zeebeClient.newPublishMessageCommand()
+        zeebeClient.newPublishMessageCommand()
                 .messageName("kuzds.EVENT.mock")
-                .correlationKey(user.getId());
-
-        step3 = step3.variables(Map.of());
-
-        step3.send().join();
+                .correlationKey(user.getId())
+                .variables(Map.of())
+                .send().join();
     }
 }

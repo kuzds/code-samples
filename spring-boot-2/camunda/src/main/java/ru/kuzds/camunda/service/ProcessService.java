@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.kuzds.camunda.dto.User;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,14 +16,15 @@ public class ProcessService {
 
     public String start() {
 
-        User user = User.builder().id(UUID.randomUUID().toString()).email("kuzds@bk.ru").build();
-
-        Map<String, Object> variables = new HashMap<>();
-        variables.put("user", user);
+        User user = User.builder()
+                .id(UUID.randomUUID().toString())
+                .email("kuzds@bk.ru")
+                .roleCode(Math.round(Math.random() + 1))
+                .build();
 
         zeebeClient.newCreateInstanceCommand()
-            .bpmnProcessId("camunda_kuzds").latestVersion()
-            .variables(variables)
+            .bpmnProcessId("kuzds_process").latestVersion()
+            .variables(Map.of("user", user))
             .send()
             .join();
 

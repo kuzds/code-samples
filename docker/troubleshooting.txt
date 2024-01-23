@@ -1,0 +1,10 @@
+Проблема со стартом движка 
+wsl --unregister docker-desktop
+wsl --unregister docker-desktop-data
+
+Проблема с потреблением памяти
+cd %UserProfile%
+notepad .wslconfig
+
+[wsl2]
+memory=2GB

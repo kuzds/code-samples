@@ -19,6 +19,7 @@
 - **Redis**\
   Simple Redis interaction and Redis caching
 - **Rsocket client/server**
+- **TestContainer**
 - **Validation**\
   Spring Boot Validation & Mock MVC for testing
 - **Vault**\
