@@ -35,8 +35,7 @@
 - **Thymeleaf**\
   Templates parsing
 - **Zip files** &#x274C;
-
-[//]: # (  Not finished)
+- **Easy-random**
 
 ## Articles
 

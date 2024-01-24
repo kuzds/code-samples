@@ -1,0 +1,15 @@
+
+Отключение теста в зависимости от профиля без загрузки контекста
+@EnabledIf(value = "#{'${spring.profiles.active}' == 'integration-test'}")
+-Dspring.profiles.active=develop
+
+Отключение тестов на Linux
+@DisabledIf(
+        expression = "#{systemProperties['os.name'].toLowerCase().contains('linux')}",
+        reason = "Отключен, поскольку IP CI/CD gitlab не зарегистрирован в криптосервере"
+)
+
+Ленивая инициализация бинов в тесте
+@SpringBootTest(properties = {"spring.main.lazy-initialization=true"})
+
+
