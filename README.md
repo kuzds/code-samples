@@ -7,6 +7,7 @@
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
 - **Camunda**
+- **Date JPA/JDBC**
 - **gRPC client/server**
 - **Integration SMB**
 - **Mail** &#x274C;
@@ -19,6 +20,7 @@
 - **Redis**\
   Simple Redis interaction and Redis caching
 - **Rsocket client/server**
+- **Liquibase**
 - **TestContainer**
 - **Validation**\
   Spring Boot Validation & Mock MVC for testing
@@ -27,6 +29,7 @@
 
 ## Libraries
 
+- **Easy-random**
 - **CSV processing**\
   Comparison of Apache Commons CSV and OpenCSV
 - **Jackson**\
@@ -35,7 +38,7 @@
 - **Thymeleaf**\
   Templates parsing
 - **Zip files** &#x274C;
-- **Easy-random**
+
 
 ## Articles
 
@@ -50,5 +53,4 @@ security
 web socket
 cookie
 OAuth
-spring-boot-data-jdbc
 )

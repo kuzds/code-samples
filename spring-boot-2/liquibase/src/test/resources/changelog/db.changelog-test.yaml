@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - include:
+      file: "changelog/db.changelog-master.yaml"
+  - include:
+      file: "v1.0.0-test/db.changelog-cummulative.yaml"
+      relativeToChangelogFile: true
