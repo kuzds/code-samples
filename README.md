@@ -2,8 +2,7 @@
 
 ## Spring Boot
 
-- **ActiveMQ**\
-  Simple sample
+- **ActiveMQ**
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
 - **Camunda**
@@ -17,8 +16,7 @@
   Config for Spring WEB
 - **RabbitMQ**\
   Topics and DeadLetter samples
-- **Redis**\
-  Simple Redis interaction and Redis caching
+- **Redis interaction/caching**
 - **Rsocket client/server**
 - **Liquibase**
 - **TestContainer**
@@ -35,8 +33,8 @@
 - **Jackson**\
   XML/JSON parsing. Streaming
 - **SMB**
-- **Thymeleaf**\
-  Templates parsing
+- **Mockserver**
+- **Thymeleaf**
 - **Zip files** &#x274C;
 
 
@@ -48,7 +46,7 @@
 TODO
 zip
 сертификаты?
-брокеры сообщений
+кафка
 security
 web socket
 cookie
