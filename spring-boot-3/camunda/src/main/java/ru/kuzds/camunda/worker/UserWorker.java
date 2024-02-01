@@ -23,12 +23,12 @@ public class UserWorker {
         log.info("Received user: {} with role: {}", user, roleAlias);
     }
 
-    @JobWorker(type = "kuzds.mockSend")
-    public void mockSend(@Variable User user) {
+    @JobWorker(type = "kuzds.throw-event")
+    public void mockSend(@Variable String correlationKey,
+                         @Variable String messageName) {
         zeebeClient.newPublishMessageCommand()
-                .messageName("kuzds.EVENT.mock")
-                .correlationKey(user.getId())
-                .variables(Map.of())
+                .messageName(messageName)
+                .correlationKey(correlationKey)
                 .send().join();
     }
 }
