@@ -6,6 +6,8 @@
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
 - **Camunda**
+- **Camunda testcontainer (Spring Boot 2)** &#x274C;
+- **Camunda in memory tests (Spring Boot 3)**
 - **Date JPA/JDBC**
 - **gRPC client/server**
 - **Integration SMB**
@@ -37,6 +39,8 @@
 - **Thymeleaf**
 - **Zip files** &#x274C;
 
+## Docker
+- **Camunda with Operate UI**
 
 ## Articles
 

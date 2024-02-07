@@ -13,3 +13,7 @@
 @SpringBootTest(properties = {"spring.main.lazy-initialization=true"})
 
 
+@DynamicPropertySource
+static void configureProperties(DynamicPropertyRegistry registry) {
+	registry.add("zeebe.client.broker.gateway-address", CONTAINER::getExternalGatewayAddress);
+}

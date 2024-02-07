@@ -1,8 +1,3 @@
-.optimize
-todo.txt
-keys
-keys_upload
-DockerfileLocal
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
