@@ -6,7 +6,7 @@
 - **Camel Springdoc**\
   Swagger configuration for SpringBoot Camel
 - **Camunda**
-- **Camunda testcontainer (Spring Boot 2)** &#x274C;
+- **Camunda testcontainer (Spring Boot 2)**
 - **Camunda in memory tests (Spring Boot 3)**
 - **Date JPA/JDBC**
 - **gRPC client/server**
