@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.kuzds.ru/user"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.kuzds.ru/user" elementFormDefault="qualified">
+
+    <xsd:element name="User" type="User"/>
+
+    <xsd:complexType name="User">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"/>
+            <xsd:element name="email" type="xsd:string"/>
+            <xsd:element name="sex" type="Sex"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="Sex">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="MALE"/>
+            <xsd:enumeration value="FEMALE"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
