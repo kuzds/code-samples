@@ -1,4 +1,0 @@
-ru:
-  kuzds:
-    mockserver-client:
-      url: "${MOCKSERVER_CLIENT_URL}"

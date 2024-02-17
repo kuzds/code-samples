@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          # https://docs.spring.io/spring-cloud-openfeign/reference/spring-cloud-openfeign.html#spring-cloud-feign-overriding-defaults
+          mockserver-client: # default - for all clients
+            # prevents blocking the caller due to the long server processing time
+            connectTimeout: ${MOCKSERVER_CONNECT_TIMEOUT:60000}
+            # is applied from the time of connection establishment and is triggered when returning the response takes too long
+            readTimeout: ${MOCKSERVER_READ_TIMEOUT:60000}
+
+ru:
+  kuzds:
+    mockserver:
+      url: "${MOCKSERVER_CLIENT_URL}"
+    unavailable-service:
+      url: "${UNAVAILABLE_SERVICE_URL}"

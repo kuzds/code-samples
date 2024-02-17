@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 
-@FeignClient(value = "mockserver-client", url = "${ru.kuzds.mockserver-client.url}")
+@FeignClient(value = "mockserver-client", url = "${ru.kuzds.mockserver.url}")
 public interface MockserverClient {
 
     @PostMapping("/payment")

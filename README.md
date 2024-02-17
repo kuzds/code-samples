@@ -9,6 +9,8 @@
 - **Camunda testcontainer (Spring Boot 2)**
 - **Camunda in memory tests (Spring Boot 3)**
 - **Date JPA/JDBC**
+- **Feignclient-Mockserver** \
+FeignClient + Mockserver + MockMVC + Easy-random
 - **gRPC client/server**
 - **Integration SMB**
 - **Mail** &#x274C;
@@ -39,8 +41,6 @@ Using TaskScheduler and ScheduledFuture
 - **Jackson**\
   XML/JSON parsing. Streaming
 - **SMB**
-- **Mockserver** \
-FeignClient + Mockserver + MockMVC + Easy-random
 - **Thymeleaf**
 - **Zip files** &#x274C;
 
