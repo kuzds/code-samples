@@ -24,6 +24,10 @@ public class ErrorResponse {
         for (FieldError fieldError : e.getBindingResult().getFieldErrors()) {
             errorsMap.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
+
+//        return e.getBindingResult().getFieldErrors().stream()
+//                .map(fieldError -> String.format("Поле %s: %s", fieldError.getField(), fieldError.getDefaultMessage()))
+//                .findFirst().orElse("Неопознанная ошибка");
     }
 
     public ErrorResponse(ConstraintViolationException e) {

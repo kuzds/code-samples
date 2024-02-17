@@ -20,10 +20,14 @@
   Topics and DeadLetter samples
 - **Redis interaction/caching**
 - **Rsocket client/server**
+- **Scheduling**\
+Using TaskScheduler and ScheduledFuture
+- **JAXB**\
+  Generate classes using xsd
 - **Liquibase**
 - **TestContainer**
 - **Validation**\
-  Spring Boot Validation & Mock MVC for testing
+  Spring Boot Validation & MockMVC for testing
 - **Vault**\
   Using Vault API to get secrets under Proxy
 
@@ -35,7 +39,8 @@
 - **Jackson**\
   XML/JSON parsing. Streaming
 - **SMB**
-- **Mockserver**
+- **Mockserver** \
+FeignClient + Mockserver + MockMVC + Easy-random
 - **Thymeleaf**
 - **Zip files** &#x274C;
 

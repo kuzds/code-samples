@@ -51,7 +51,7 @@ class PaymentControllerTests {
     }
 
     @Test
-    void shouldSuccessCheck() throws Exception {
+    void shouldHandle200() throws Exception {
         PaymentRequest paymentRequest = GENERATOR.nextObject(PaymentRequest.class);
         PaymentResponse responseBody = GENERATOR.nextObject(PaymentResponse.class);
         try (MockServerClient client = new MockServerClient(CONTAINER.getHost(), CONTAINER.getServerPort())) {
@@ -63,6 +63,7 @@ class PaymentControllerTests {
                             .withBody(content))
                     .respond(response()
                             .withContentType(org.mockserver.model.MediaType.APPLICATION_JSON)
+                            .withStatusCode(200)
                             .withBody(objectMapper.writeValueAsBytes(responseBody)));
 
             MvcResult result = mvc.perform(post("/api/v1/payment")
