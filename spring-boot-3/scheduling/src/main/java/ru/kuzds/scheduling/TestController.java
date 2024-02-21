@@ -3,18 +3,13 @@ package ru.kuzds.scheduling;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.TaskScheduler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ScheduledFuture;
 
 @Slf4j
 @RestController
@@ -22,50 +17,50 @@ import java.util.concurrent.ScheduledFuture;
 @RequiredArgsConstructor
 public class TestController {
 
-    private final TaskScheduler taskScheduler;
-    private final Map<Integer, Context> contextMap = new ConcurrentHashMap<>();
-    private final Map<Integer, ScheduledFuture<?>> scheduleMap = new ConcurrentHashMap<>();
+    private final SchedulingService schedulingService;
+    private final Map<String, Context> contextMap = new ConcurrentHashMap<>();
 
-    @GetMapping("/start/{id}")
+    @GetMapping("/start/delayed/{id}")
     public String start(@PathVariable("id") int id) {
-        if (scheduleMap.get(id) != null) {
-            return "id is busy";
-        }
-        log.info("Start task with id={}", id);
+        log.info("Start delayed task with id={}", id);
+        schedulingService.schedule(() -> log.info("[Delayed] id={} | random={}", id, UUID.randomUUID()));
+        return "OK";
+    }
+
+    @GetMapping("/start/periodic/{id}")
+    public String start(@PathVariable("id") String id) {
+        log.info("Start periodic task with id={}", id);
 
         Context context = new Context();
         context.setCount(5);
         contextMap.put(id, context);
 
-        ScheduledFuture<?> schedule = taskScheduler.scheduleAtFixedRate(
-                () -> {
-                    log.info("id={} | random={}", id, UUID.randomUUID());
+        schedulingService.scheduleAtFixedRate(id, () -> {
+                    log.info("[Periodic] id={} | random={}", id, UUID.randomUUID());
                     if (contextMap.get(id).decrement() <= 0) {
                         stop(id);
                     }
                 },
-                Instant.now().plusMillis(5000),
-                Duration.ofMillis(2000)
-        );
-        scheduleMap.put(id, schedule);
-
+                Instant.now().plusMillis(3000),
+                Duration.ofMillis(2000));
         return "OK";
     }
 
     @GetMapping("/stop/{id}")
-    public void stop(@PathVariable("id") int id) {
-        log.info("Stop task with id={}", id);
-        ScheduledFuture<?> scheduledFuture = scheduleMap.remove(id);
-        if (scheduledFuture != null) {
-            scheduledFuture.cancel(false);
-        } else {
-            log.warn("Unable cancel schedule with id={}", id);
-        }
+    public void stop(@PathVariable("id") String id) {
+        schedulingService.cancel(id);
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    String handle(IllegalArgumentException e) {
+        return e.getMessage();
+    }
+
 
     @Data
     public static class Context {
         private volatile int count;
+
         public synchronized int decrement() {
             return --count;
         }

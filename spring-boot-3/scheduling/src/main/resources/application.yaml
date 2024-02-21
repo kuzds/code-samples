@@ -1,2 +1,6 @@
 server:
   port: 8282
+
+ru:
+  kuzds:
+    task-delay: ${TASK_DELAY:2000}
