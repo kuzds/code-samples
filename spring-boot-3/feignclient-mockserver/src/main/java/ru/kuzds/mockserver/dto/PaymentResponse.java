@@ -1,4 +1,4 @@
-package ru.kuzds.mockserver;
+package ru.kuzds.mockserver.dto;
 
 import lombok.Data;
 

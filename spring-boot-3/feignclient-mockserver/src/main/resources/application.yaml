@@ -9,6 +9,8 @@ spring:
             connectTimeout: ${MOCKSERVER_CONNECT_TIMEOUT:60000}
             # is applied from the time of connection establishment and is triggered when returning the response takes too long
             readTimeout: ${MOCKSERVER_READ_TIMEOUT:60000}
+            # Log only the request method and URL and the response status code and execution time.
+            loggerLevel: BASIC # ! important for RequestLoggerClientConfig
 
 ru:
   kuzds:

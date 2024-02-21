@@ -1,9 +1,13 @@
-package ru.kuzds.mockserver;
+package ru.kuzds.mockserver.controller;
 
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.kuzds.mockserver.client.MockserverClient;
+import ru.kuzds.mockserver.client.UnavailableServiceClient;
+import ru.kuzds.mockserver.dto.PaymentRequest;
+import ru.kuzds.mockserver.dto.PaymentResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
