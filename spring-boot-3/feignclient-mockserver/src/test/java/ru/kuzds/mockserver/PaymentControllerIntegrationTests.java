@@ -29,11 +29,11 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.kuzds.mockserver.controller.PaymentController.*;
+import static ru.kuzds.mockserver.controller.PaymentControllerAdvice.NOT_FOUND;
+import static ru.kuzds.mockserver.controller.PaymentControllerAdvice.READ_TIMEOUT;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -58,7 +58,6 @@ class PaymentControllerIntegrationTests {
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry) {
         registry.add("ru.kuzds.mockserver.url", CONTAINER::getEndpoint);
-        registry.add("ru.kuzds.unavailable-service.url", () -> "http://localhost:1234");
         registry.add("spring.cloud.openfeign.client.config.mockserver-client.readTimeout", () -> 2000);
     }
 
@@ -148,12 +147,5 @@ class PaymentControllerIntegrationTests {
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isInternalServerError())
                 .andExpect(content().string(READ_TIMEOUT));
-    }
-
-    @Test
-    void test_unavailable() throws Exception {
-        mvc.perform(get("/unavailable"))
-                .andExpect(status().isInternalServerError())
-                .andExpect(content().string(SERVICE_UNAVAILABLE));
     }
 }

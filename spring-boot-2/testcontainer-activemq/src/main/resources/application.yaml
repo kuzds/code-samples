@@ -1,0 +1,11 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+    mapper:
+      accept-case-insensitive-properties: true
+
+kuzds:
+  activemq:
+    broker-url: ${CFT_ACTIVEMQ_URL}
+    user: ${CFT_ACTIVEMQ_USER}
+    password: ${CFT_ACTIVEMQ_PASSWORD}

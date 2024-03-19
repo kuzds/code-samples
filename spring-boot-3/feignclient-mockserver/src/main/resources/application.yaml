@@ -16,5 +16,3 @@ ru:
   kuzds:
     mockserver:
       url: "${MOCKSERVER_CLIENT_URL}"
-    unavailable-service:
-      url: "${UNAVAILABLE_SERVICE_URL}"

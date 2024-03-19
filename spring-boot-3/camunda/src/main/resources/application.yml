@@ -1,4 +1,4 @@
 
 zeebe.client:
   broker.gateway-address: ${ZEEBE_URL}
-  security.plaintext: true
+  security.plaintext: true # !important

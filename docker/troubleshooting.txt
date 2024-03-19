@@ -8,3 +8,7 @@ notepad .wslconfig
 
 [wsl2]
 memory=2GB
+
+You have reached your pull rate limit
+docker login --username=${USERNAME}
+Password:
