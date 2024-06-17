@@ -40,7 +40,7 @@ Using TaskScheduler and ScheduledFuture
 - **CSV processing**\
   Comparison of Apache Commons CSV and OpenCSV
 - **Jackson**\
-  XML/JSON parsing. Streaming
+  XML/JSON parsing. Streaming. OffsetDateTime parsing
 - **SMB**
 - **Thymeleaf**
 - **Zip files** &#x274C;
