@@ -21,6 +21,7 @@ FeignClient + Mockserver + MockMVC + Easy-random
 - **RabbitMQ**\
   Topics and DeadLetter samples
 - **Redis interaction/caching**
+- **Rest client ssl check disabling**
 - **Reactor-rabbitmq**
 - **Rsocket client/server**
 - **Scheduling**\
