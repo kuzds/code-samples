@@ -21,6 +21,7 @@ FeignClient + Mockserver + MockMVC + Easy-random
 - **RabbitMQ**\
   Topics and DeadLetter samples
 - **Redis interaction/caching**
+- **Reactor-rabbitmq**
 - **Rsocket client/server**
 - **Scheduling**\
 Using TaskScheduler and ScheduledFuture

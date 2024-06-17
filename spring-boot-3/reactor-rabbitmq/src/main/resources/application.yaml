@@ -1,0 +1,7 @@
+rmq:
+  uri: amqp://admin:admin@localhost:5672
+  connection-name: demo-connection-name
+
+protocol:
+  routing-key:
+    demo: demo-routing-key
