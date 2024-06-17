@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -17,6 +17,6 @@ public class User {
 
     @Id
     private UUID id;
-    private Date birthDate;
+    private OffsetDateTime birthDate;
     private boolean bro;
 }

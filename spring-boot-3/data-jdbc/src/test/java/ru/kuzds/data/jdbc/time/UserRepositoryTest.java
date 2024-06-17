@@ -1,5 +1,6 @@
 package ru.kuzds.data.jdbc.time;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,16 +22,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Testcontainers
 class UserRepositoryTest {
     @Container
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:14-alpine")
+    static PostgreSQLContainer<?> POSTGRESQL = new PostgreSQLContainer<>("postgres:14-alpine")
             .withDatabaseName("test")
             .withUsername("test")
             .withPassword("test");
 
+    @AfterAll
+    public static void destroy() {
+        POSTGRESQL.close();
+    }
+
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", postgres::getJdbcUrl);
-        registry.add("spring.datasource.username", postgres::getUsername);
-        registry.add("spring.datasource.password", postgres::getPassword);
+        registry.add("spring.datasource.url", POSTGRESQL::getJdbcUrl);
+        registry.add("spring.datasource.username", POSTGRESQL::getUsername);
+        registry.add("spring.datasource.password", POSTGRESQL::getPassword);
         registry.add("spring.liquibase.change-log", () -> "classpath:changelog/db.changelog-test.yaml");
         registry.add("spring.liquibase.enabled", () -> "true");
     }
@@ -41,7 +47,7 @@ class UserRepositoryTest {
     @BeforeEach
     void setUp() {
         repository.deleteAll();
-        repository.save(new User(null, new Date(), true));
+        repository.save(new User(null, OffsetDateTime.now(), true));
     }
 
     @Test
