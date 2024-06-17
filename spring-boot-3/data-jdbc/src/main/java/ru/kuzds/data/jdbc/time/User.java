@@ -1,6 +1,7 @@
 package ru.kuzds.data.jdbc.time;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -13,10 +14,12 @@ import java.util.UUID;
 @Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
 
     @Id
     private UUID id;
     private OffsetDateTime birthDate;
+    private OffsetDateTime birthDateTime;
     private boolean bro;
 }

@@ -47,12 +47,18 @@ class UserRepositoryTest {
     @BeforeEach
     void setUp() {
         repository.deleteAll();
-        repository.save(new User(null, OffsetDateTime.now(), true));
+        repository.save(User.builder()
+                        .id(null)
+                        .bro(true)
+                        .birthDate(OffsetDateTime.now())
+                        .birthDateTime(OffsetDateTime.now())
+                .build());
     }
 
     @Test
     void shouldGetPendingTodos() {
         List<User> users = repository.findAll();
         assertThat(users).hasSize(1);
+        assertThat(users.get(0)).hasNoNullFieldsOrProperties();
     }
 }
