@@ -1,4 +1,4 @@
-package ru.kuzds.proxy;
+package ru.kuzds.rest.sslcheck;
 
 import feign.Client;
 import org.apache.http.conn.ssl.TrustStrategy;
@@ -18,10 +18,10 @@ import java.security.NoSuchAlgorithmException;
 public class FeignConfig {
 
     @Value("${proxy.host}")
-    private String HOST_PROXY;
+    private String proxyHost;
 
     @Value("${proxy.port}")
-    private Integer PORT_PROXY;
+    private Integer proxyPort;
 
     @Bean
     public Client feignClient() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
@@ -30,7 +30,7 @@ public class FeignConfig {
         SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
 
         return new Client.Proxied(sslContext.getSocketFactory(), null,
-            new Proxy(Proxy.Type.HTTP, new InetSocketAddress(HOST_PROXY, PORT_PROXY))
+            new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort))
         );
     }
 }

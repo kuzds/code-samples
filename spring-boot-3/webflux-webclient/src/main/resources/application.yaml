@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: webflux-webclient
+
+logging.level:
+  reactor.netty.http.client: DEBUG
+  ru.kuzds.controller: DEBUG

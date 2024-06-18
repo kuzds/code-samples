@@ -1,4 +1,4 @@
-package ru.kuzds.proxy;
+package ru.kuzds.rest.sslcheck;
 
 import org.apache.http.HttpHost;
 import org.apache.http.impl.client.HttpClientBuilder;

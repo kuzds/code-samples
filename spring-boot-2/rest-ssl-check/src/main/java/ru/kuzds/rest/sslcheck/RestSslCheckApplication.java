@@ -1,4 +1,4 @@
-package ru.kuzds.proxy;
+package ru.kuzds.rest.sslcheck;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
 @SpringBootApplication
-public class ProxyApplication {
+public class RestSslCheckApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProxyApplication.class, args);
+		SpringApplication.run(RestSslCheckApplication.class, args);
 	}
 
 }

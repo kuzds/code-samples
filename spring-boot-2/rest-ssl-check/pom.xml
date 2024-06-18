@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.kuzds</groupId>
-	<artifactId>proxy</artifactId>
+	<artifactId>rest-ssl-check</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>proxy</name>
 	<description>Demo project for Spring Boot</description>

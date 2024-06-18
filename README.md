@@ -16,7 +16,7 @@ FeignClient + Mockserver + MockMVC + Easy-random
 - **Mail** &#x274C;
 - **Paging**\
   Using Spring Data for paging
-- **Proxy**\
+- **Rest ignore SSL check**\
   Config for Spring WEB
 - **RabbitMQ**\
   Topics and DeadLetter samples
