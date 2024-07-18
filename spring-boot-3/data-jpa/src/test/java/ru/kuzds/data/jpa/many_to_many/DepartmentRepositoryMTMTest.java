@@ -1,4 +1,4 @@
-package ru.kuzds.data.jpa.time;
+package ru.kuzds.data.jpa.many_to_many;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Testcontainers
-class UserRepositoryTest {
+class DepartmentRepositoryMTMTest {
     @Container
     static PostgreSQLContainer<?> POSTGRESQL = new PostgreSQLContainer<>("postgres:14-alpine")
             .withDatabaseName("test")
@@ -34,18 +34,28 @@ class UserRepositoryTest {
     }
 
     @Autowired
-    UserRepository repository;
+    DepartmentRepositoryMTM repository;
 
     @BeforeEach
     void setUp() {
         repository.deleteAll();
-        OffsetDateTime birthDateTime = OffsetDateTime.parse("2024-01-25T10:56:44.772Z");
-        repository.save(new User(null, birthDateTime));
+        DepartmentMTM department = new DepartmentMTM();
+        department.setName("department");
+
+        List<EmployeeMTM> employees = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            EmployeeMTM employee = new EmployeeMTM();
+            employee.setName("employee" + i);
+            employee.setDepartments(List.of(department));
+            employees.add(employee);
+        }
+        department.setEmployees(employees);
+        repository.save(department);
     }
 
     @Test
     void test() {
-        List<User> users = repository.findAll();
-        assertThat(users).hasSize(1);
+        List<DepartmentMTM> departments = repository.findAll();
+        assertThat(departments).hasSize(1);
     }
 }
