@@ -21,7 +21,6 @@ public class DepartmentOTOU {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id")
-    @ToString.Exclude
     private EmployeeOTOU employee;
 
 }

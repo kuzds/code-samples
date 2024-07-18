@@ -20,7 +20,6 @@ public class DepartmentOTOB {
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "department")
-    @ToString.Exclude
     private EmployeeOTOB employee;
 
 }
