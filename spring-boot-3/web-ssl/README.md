@@ -9,23 +9,23 @@ https://sky.pro/wiki/java/sozdanie-i-raznitsa-trust-store-i-key-store-v-ssl-s-ke
 https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
 
 
+Сгенерировать SSL сертификат в хранилище ключей
 ```bash
-# Generate an SSL certificate in a keystore
-keytool -genkey -alias server_keystore -keyalg RSA -storetype PKCS12 -keystore server_keystore.p12 -storepass password -validity 3650
-# keytool -genkey -alias server_keystore -keyalg RSA -keysize 2048 -storetype JKS -keystore server_keystore.jks -validity 3650 -storepass password 
+keytool -genkey -alias server_keystore -keyalg RSA -storetype PKCS12 -keystore server_keystore.p12 -storepass password -validity 3650 -noprompt -dname "CN=localhost, OU=Test, O=Test, L=Test, S=Test, C=RU"
 ```
+
+Получить информацию о SSL сертификатах в хранилище
 ```bash
-# Extract an SSL certificate from a keystore
+keytool -list -keystore server_keystore.p12 -V
+```
+
+Извлечь SSL сертификат из хранилища
+```bash
 keytool -export -alias server_keystore -rfc -keystore server_keystore.p12 -file exported.cert -storepass password
 ```
 
-Импорт сертификата в keystore/truststore
+Импорт сертификата в keystore/truststore (Создать новый keystore/truststore, либо импортировать в уже имеющийся)
 https://stackoverflow.com/a/373307/22064892
 ```bash
-# Создать новый keystore/truststore, либо импортировать в уже имеющийся 
-#keytool -import -alias client_truststore -file exported.cer -keystore client_truststore.p12 -storepass password
 keytool -import -alias client_truststore -file exported.cert -keystore client_truststore.jks -storepass password
 ```
-Trust this certificate: [Yes]
-
-
