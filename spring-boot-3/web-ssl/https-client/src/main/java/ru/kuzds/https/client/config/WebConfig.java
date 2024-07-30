@@ -1,6 +1,5 @@
 package ru.kuzds.https.client.config;
 
-import io.netty.handler.logging.LogLevel;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
@@ -12,7 +11,6 @@ import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-import reactor.netty.transport.logging.AdvancedByteBufFormat;
 import ru.kuzds.https.client.config.properties.DemoProperties;
 
 import javax.net.ssl.SSLException;
@@ -62,7 +60,8 @@ public class WebConfig {
     ReactorClientHttpConnector reactorClientHttpConnector(SslContext sslContext) {
         HttpClient httpClient = HttpClient.create()
                 .secure(t -> t.sslContext(sslContext))
-                .wiretap(this.getClass().getCanonicalName(), LogLevel.INFO, AdvancedByteBufFormat.TEXTUAL);
+//                .wiretap(this.getClass().getCanonicalName(), LogLevel.INFO, AdvancedByteBufFormat.TEXTUAL)
+                ;
 
         return new ReactorClientHttpConnector(httpClient);
     }
